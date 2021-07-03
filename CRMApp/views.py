@@ -48,7 +48,7 @@ class SignOutView(TemplateView):
         logout(request)
         return redirect("signin")
 
-def json(request):
+def Json(request):
     cdata=list(Customer.objects.values())
     idata=list(Item.objects.values())
     return JsonResponse(cdata,safe=False)
