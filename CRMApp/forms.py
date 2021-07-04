@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import MyUser,Customer
+from .models import MyUser,Customer,Item
+from django.forms import ModelForm
 
 class AccountCreationForm(UserCreationForm):
     class Meta:
@@ -10,3 +11,8 @@ class AccountCreationForm(UserCreationForm):
 class LoginForm(forms.Form):
     username=forms.CharField()
     password=forms.CharField(widget=forms.PasswordInput)
+
+class ItemCreateForm(ModelForm):
+    class Meta:
+        model=Item
+        fields="__all__"

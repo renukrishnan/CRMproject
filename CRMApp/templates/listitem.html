@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    {%for item in items%}
+    <tr>
+        <td>{{item.productName}}</td>
+        <td>{{item.productDesc}}</td>
+        <td>{{item.quantity}}</td>
+        <td>{{item.taxableAmount}}</td>
+        <td> <a href="{%url 'update' item.pk%}">UPDATE</a></td>
+        <td><a href="{%url 'detail' item.pk%}">VIEW</a></td>
+        <td><a href="{%url 'delete' item.pk%}">DELETE</a></td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

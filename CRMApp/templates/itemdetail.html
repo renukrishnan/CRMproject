@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{%extends 'index.html'%}
+
+
+{%block body_block%}
+
+
+<h1> WELCOME USER {{request.user}}</h1>
+<div class="container">
+    <div class="row">
+
+        <div class="col-4"></div>
+        <div class="col-4">
+            <div class="card" style="width: 18rem;">
+                <img src="#" class="card-img-top" style="height:300px" alt="..." >
+                <div class="card-body">
+                    <h5 class="card-title">{{item.productName}}</h5>
+                    <p class="card-text"> {{item.productDesc}}</p>
+                    <p class="card-text"> {{item.Quantity}}</p>
+                    <p class="card-text"> {{item.taxableAmount}}</p>
+                    <a href="#" class="btn btn-primary">Place order</a>-->
+                </div>
+            </div>
+
+        </div>
+        <div class="col-4"></div>
+
+    </div>
+</div>
+
+{% endblock %}

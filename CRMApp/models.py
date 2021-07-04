@@ -24,7 +24,6 @@ class Customer(models.Model):
     vehicleType=models.CharField(max_length=20)
 
 class Item(models.Model):
-    oderno=models.ForeignKey(Customer,on_delete=models.CASCADE)
     productName=models.CharField(max_length=20)
     productDesc=models.CharField(max_length=20)
     quantity=models.IntegerField(null=True)
