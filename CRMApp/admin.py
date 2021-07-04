@@ -4,30 +4,12 @@ from import_export import resources
 # Register your models here.
 
 from CRMApp.models import MyUser,Customer,Item
-
-class UserResource(resources.ModelResource):
-    class Meta:
-        model=MyUser
-        fields=("firstname","lastname","email")
-class CustomerResource(resources.ModelResource):
-    class Meta:
-        model=Customer
-        fields=("fromGstin","fromTrdName","fromplace")
-class ItemResource(resources.ModelResource):
-    class Meta:
-        model=Item
-        feilds=("productName","productDesc")
-
-class UserAdmin(ImportExportModelAdmin):
-    resource_class = UserResource
+@admin.register(MyUser)
+@admin.register(Customer)
+@admin.register(Item)
+class UserResource(ImportExportModelAdmin):
     pass
-class CustomerAdmin(ImportExportModelAdmin):
-    resource_class = CustomerResource
+class CustomerResource(ImportExportModelAdmin):
     pass
-class ItemAdmin(ImportExportModelAdmin):
-    resource_class = ItemResource
+class ItemResource(ImportExportModelAdmin):
     pass
-
-admin.site.register(MyUser)
-admin.site.register(Customer)
-admin.site.register(Item)

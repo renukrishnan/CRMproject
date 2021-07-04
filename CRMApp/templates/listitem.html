@@ -5,18 +5,28 @@
     <title>Title</title>
 </head>
 <body>
-<table>
+<div class="container" >
+<table border="1px solid black" align="center">
+    <tr>
+        <th> Product Name</th>
+        <th> Product Desc</th>
+        <th> Quantity</th>
+        <th> Taxable Amount</th>
+    </tr>
     {%for item in items%}
     <tr>
         <td>{{item.productName}}</td>
         <td>{{item.productDesc}}</td>
         <td>{{item.quantity}}</td>
         <td>{{item.taxableAmount}}</td>
+        <td> <a href="{%url 'create' %}">CREATE</a></td>
         <td> <a href="{%url 'update' item.pk%}">UPDATE</a></td>
         <td><a href="{%url 'detail' item.pk%}">VIEW</a></td>
         <td><a href="{%url 'delete' item.pk%}">DELETE</a></td>
+        <td><a href="{%url 'json'%}">DOWNLOAD</a></td>
     </tr>
     {% endfor %}
 </table>
+</div>
 </body>
 </html>

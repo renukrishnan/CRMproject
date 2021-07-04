@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import AccountCreateView,SigninView,IndexView,SignOutView,user_home,ItemCreateView,ItemDetailView,ItemListView,ItemUpdateView,ItemDeleteView
+from .views import AccountCreateView,SigninView,IndexView,SignOutView,user_home,ItemCreateView,ItemDetailView,ItemListView,ItemUpdateView,ItemDeleteView,PlaceOrderView
 from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
 from . import views
@@ -15,7 +15,8 @@ urlpatterns=[
     path('items/list',ItemListView.as_view(),name="list"),
     path('items/<int:pk>',ItemUpdateView.as_view(),name="update"),
     path('items/detail/<int:pk>',ItemDetailView.as_view(),name="detail"),
-    path('items/remove/<int:pk>',ItemDeleteView.as_view(),name="delete")
+    path('items/remove/<int:pk>',ItemDeleteView.as_view(),name="delete"),
+    path('items/placeorder/<int:pk>',PlaceOrderView.as_view(),name="order")
 
 
 ]

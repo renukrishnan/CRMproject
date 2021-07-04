@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.urls import reverse_lazy
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render
-from .forms import AccountCreationForm,LoginForm,ItemCreateForm
+from .forms import AccountCreationForm,LoginForm,ItemCreateForm,CustomerForm
 from .models import MyUser,Customer,Item
 from django.views.generic import CreateView,TemplateView,ListView,DetailView,UpdateView,DeleteView
 from django.http import JsonResponse
@@ -48,7 +48,7 @@ class SigninView(TemplateView):
 class SignOutView(TemplateView):
     def get(self,request,*args,**kwargs):
         logout(request)
-        return redirect("signin")
+        return redirect("login")
 
 def Json(request):
     cdata=list(Customer.objects.values())
@@ -91,8 +91,24 @@ class ItemUpdateView(UpdateView):
     success_url=reverse_lazy("list")
 
 class ItemDeleteView(DeleteView):
-    model=Item
+    model = Item
     template_name = "delete.html" # django view expecting a template here to confirm delete. thats y template name and success url is given here
     success_url= reverse_lazy("list")
 
-#class PlaceOrderView(TemplateView):
+class PlaceOrderView(TemplateView):
+    model = Customer
+    template_name = "placeorder.html"
+    form_class=CustomerForm
+    success_url= reverse_lazy("ordersuccess")
+    context = {}
+
+    def get(self, request, *args, **kwargs):
+        form = self.form_class()
+        self.context["form"] = form
+        return render(request, self.template_name, self.context)
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, self.template_name, self.context)

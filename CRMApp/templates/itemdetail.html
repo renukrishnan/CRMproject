@@ -12,13 +12,12 @@
         <div class="col-4"></div>
         <div class="col-4">
             <div class="card" style="width: 18rem;">
-                <img src="#" class="card-img-top" style="height:300px" alt="..." >
                 <div class="card-body">
-                    <h5 class="card-title">{{item.productName}}</h5>
-                    <p class="card-text"> {{item.productDesc}}</p>
-                    <p class="card-text"> {{item.Quantity}}</p>
-                    <p class="card-text"> {{item.taxableAmount}}</p>
-                    <a href="#" class="btn btn-primary">Place order</a>-->
+                    <h5 class="card-title">ProductName: {{item.productName}}</h5>
+                    <p class="card-text"> Product Description: {{item.productDesc}}</p>
+                    <p class="card-text"> Quantity: {{item.Quantity}}</p>
+                    <p class="card-text"> Taxable Amount: {{item.taxableAmount}}</p>
+                    <a href="{%url 'order' item.id%}" class="btn btn-primary">Place order</a>
                 </div>
             </div>
 
